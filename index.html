@@ -9,11 +9,13 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--gris-claro);color:var(--texto);line-height:1.6}
 .container{max-width:1200px;margin:0 auto;padding:2rem}
-header{background:linear-gradient(90deg,var(--rojo),var(--azul));color:var(--blanco);padding:2.5rem 3rem;border-radius:12px;margin-bottom:2rem;box-shadow:0 4px 20px rgba(37,49,80,0.3)}
+header{background:linear-gradient(90deg,var(--rojo),var(--azul));color:var(--blanco);padding:2.5rem 3rem;border-radius:12px;margin-bottom:2rem;box-shadow:0 4px 20px rgba(37,49,80,0.3);display:flex;align-items:center;gap:2rem}
+header .header-content{flex:1}
 header h1{font-size:1.75rem;font-weight:700;margin-bottom:0.5rem}
 header .subtitle{font-size:1rem;opacity:0.9}
 header .meta{display:flex;gap:2rem;margin-top:1rem;font-size:0.85rem;opacity:0.8}
-.logo-placeholder{float:right;width:80px;height:80px;background:rgba(255,255,255,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;text-align:center;color:rgba(255,255,255,0.6)}
+.logo-header{width:90px;height:90px;flex-shrink:0}
+.logo-header svg{width:100%;height:100%}
 .resumen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-bottom:2rem}
 .resumen-card{background:var(--blanco);border-radius:10px;padding:1.5rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-top:4px solid var(--azul)}
 .resumen-card .valor{font-size:2rem;font-weight:700;color:var(--azul)}
@@ -30,7 +32,7 @@ header .meta{display:flex;gap:2rem;margin-top:1rem;font-size:0.85rem;opacity:0.8
 .kpi-card .kpi-values{display:flex;gap:1.5rem;margin-top:0.25rem}
 .kpi-card .kpi-real{font-weight:700;color:var(--azul)}
 .kpi-card .kpi-obj{font-size:0.85rem;color:var(--texto-sec)}
-.cumpl-critico{color:var(--rojo-sem);font-weight:600}.cumpl-pendiente{color:var(--texto-sec);font-style:italic;font-size:0.8rem}
+.cumpl-critico{color:var(--rojo-sem);font-weight:600;font-size:0.8rem}.cumpl-pendiente{color:var(--texto-sec);font-style:italic;font-size:0.8rem}.cumpl-ok{color:var(--verde);font-weight:600;font-size:0.8rem}
 .table-wrapper{background:var(--blanco);border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:1.5rem}
 table{width:100%;border-collapse:collapse}
 th{background:var(--azul);color:var(--blanco);padding:0.85rem 1rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.03em;text-align:left}
@@ -48,91 +50,124 @@ tr:last-child td{border-bottom:none}
 .backlog-list{background:var(--blanco);border-radius:10px;padding:1.25rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:1rem}
 .backlog-list ul{padding-left:1.5rem}.backlog-list li{margin-bottom:0.4rem;font-size:0.88rem;color:var(--texto-sec)}
 .footer{text-align:center;padding:2rem 0 1rem;font-size:0.8rem;color:var(--texto-sec);border-top:1px solid var(--gris-medio);margin-top:2rem}
-@media(max-width:768px){.container{padding:1rem}header{padding:1.5rem}header h1{font-size:1.3rem}.resumen-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.container{padding:1rem}header{padding:1.5rem;flex-direction:column}header h1{font-size:1.3rem}.resumen-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <div class="container">
 <header>
-<div class="logo-placeholder">LOGO<br>El Libertador</div>
+<div class="logo-header"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none"><g transform="translate(10,5)"><path d="M8 58 C8 58 18 65 30 60 C32 59 34 57 34 55 L34 48 C34 46 32 44 30 44 L12 44 C10 44 8 46 8 48 Z" fill="#ffffff"/><rect x="14" y="8" width="6" height="36" rx="1" fill="#ffffff"/><rect x="22" y="16" width="6" height="28" rx="1" fill="#ffffff"/><rect x="30" y="22" width="6" height="22" rx="1" fill="#ffffff"/><path d="M12 8 L20 2 L38 18" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M4 52 C4 52 2 62 10 66 C18 70 32 66 38 60 C40 58 40 54 38 52" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round"/></g></svg></div>
+<div class="header-content">
 <h1>Dashboard de Seguimiento Ejecutivo</h1>
 <p class="subtitle">Squad El Libertador &mdash; Reporte VP Sponsor</p>
-<div class="meta"><span>Fecha de corte: 7 de Mayo 2026</span><span>Carriles activos: 4</span></div>
+<div class="meta"><span>Fecha de corte: 7 de Mayo 2026</span><span>Carriles activos: 5</span></div>
+</div>
 </header>
 
 <section class="section">
 <h2 class="section-title">Resumen Ejecutivo</h2>
 <div class="resumen-grid">
-<div class="resumen-card"><div class="valor">4</div><div class="label">Carriles Estrategicos</div></div>
-<div class="resumen-card"><div class="valor">9 Dev</div><div class="label">Equipo Total</div></div>
-<div class="resumen-card"><div class="valor" style="color:#f0ad4e">En Definicion</div><div class="label">Cumplimiento Promedio</div></div>
+<div class="resumen-card"><div class="valor">5</div><div class="label">Carriles Estrategicos</div></div>
+<div class="resumen-card"><div class="valor">10 Dev</div><div class="label">Equipo Total</div></div>
 <div class="resumen-card"><div class="valor" style="color:#dc3545">3</div><div class="label">Alertas Activas</div></div>
 </div>
 </section>
 
 <section class="section">
 <h2 class="section-title">1. Apificacion</h2>
-<div class="section-desc"><strong>Proposito:</strong> Habilitar integracion tecnologica con aliados para originar estudios digitales de arrendamiento desde sus CRM.</div>
+<div class="section-desc"><strong>Proposito:</strong> Habilitar la integracion tecnologica con aliados (inmobiliarias e integradores) para que puedan originar estudios digitales de arrendamiento directamente desde sus CRM o canales digitales. Acelerar ingreso de negocios, reducir fricciones operativas, incrementar volumen de estudios digitales.</div>
 <h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">KPIs</h3>
 <div class="kpi-grid">
-<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Aliados en produccion</div><div class="kpi-values"><span class="kpi-real">5</span><span class="kpi-obj">Obj: Pendiente</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
-<div class="kpi-card"><div class="semaforo rojo"></div><div class="kpi-info"><div class="kpi-name">CRM en Produccion</div><div class="kpi-values"><span class="kpi-real">0</span><span class="kpi-obj">Obj: 7</span></div><div class="cumpl-critico">0.00%</div></div></div>
-<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Solicitudes via integradores</div><div class="kpi-values"><span class="kpi-real">35</span><span class="kpi-obj">Obj: Pendiente</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
+<div class="kpi-card"><div class="semaforo rojo"></div><div class="kpi-info"><div class="kpi-name">Aliados VIP en produccion</div><div class="kpi-values"><span class="kpi-real">5</span><span class="kpi-obj">Obj: 138</span></div><div class="cumpl-critico">3.62%</div></div></div>
+<div class="kpi-card"><div class="semaforo rojo"></div><div class="kpi-info"><div class="kpi-name">CRM en Produccion</div><div class="kpi-values"><span class="kpi-real">0</span><span class="kpi-obj">Obj: 6</span></div><div class="cumpl-critico">0.00%</div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Solicitudes via apificacion</div><div class="kpi-values"><span class="kpi-real">35</span><span class="kpi-obj">Obj: Pendiente</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
 </div>
 <h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">Estado Actual</h3>
-<div class="table-wrapper"><table><thead><tr><th>Aliado</th><th>Tipo</th><th>Estado</th><th>Fecha</th></tr></thead><tbody>
-<tr><td>Simi</td><td>Integrador</td><td><span class="badge badge-pruebas">Pruebas</span></td><td>Prod: 8 mayo</td></tr>
-<tr><td>Empatia</td><td>Integrador</td><td><span class="badge badge-pruebas">Pruebas</span></td><td>Prod: 12 mayo</td></tr>
-<tr><td>Orbis</td><td>Integrador</td><td><span class="badge badge-dev">Desarrollo</span></td><td>Prod: 15 mayo</td></tr>
-<tr><td>Alquilando</td><td>Inmobiliaria</td><td><span class="badge badge-prod">Produccion</span></td><td>4 mayo</td></tr>
+<div class="table-wrapper"><table><thead><tr><th>Aliado</th><th>Tipo</th><th>Estado</th><th>Fecha Clave</th></tr></thead><tbody>
+<tr><td>Simi</td><td>CRM</td><td><span class="badge badge-pruebas">Pruebas</span></td><td>Prod: 15 mayo</td></tr>
+<tr><td>Empatia</td><td>CRM</td><td><span class="badge badge-pruebas">Pendiente retomar</span></td><td>Pendiente definir</td></tr>
+<tr><td>Orbis</td><td>CRM</td><td><span class="badge badge-dev">Desarrollo</span></td><td>Pendiente inicio pruebas</td></tr>
+<tr><td>Domus</td><td>CRM</td><td><span class="badge badge-dev">Desarrollo</span></td><td>-</td></tr>
+<tr><td>Sedi</td><td>CRM</td><td><span class="badge badge-dev">Desarrollo</span></td><td>-</td></tr>
+<tr><td>I+D</td><td>CRM</td><td><span class="badge badge-dev">Desarrollo</span></td><td>Pendiente definir</td></tr>
+<tr><td>Alquilando</td><td>Inmobiliaria</td><td><span class="badge badge-prod">Produccion</span></td><td>4 mayo (marcha blanca)</td></tr>
+<tr><td>Portada Inmobiliaria</td><td>Inmobiliaria</td><td><span class="badge badge-dev">Desarrollo</span></td><td>Retomado 25 abril</td></tr>
+<tr><td>Horacio Nunez S.A.S.</td><td>Inmobiliaria</td><td><span class="badge badge-dev">Desarrollo</span></td><td>-</td></tr>
+<tr><td>A y C Inmobiliarios</td><td>Inmobiliaria</td><td><span class="badge badge-dev">Desarrollo</span></td><td>-</td></tr>
+<tr><td>Gomez y Asociados</td><td>Inmobiliaria</td><td><span class="badge badge-dev">Desarrollo</span></td><td>-</td></tr>
+<tr><td>Escobar Salamanca</td><td>Inmobiliaria</td><td><span class="badge badge-dev">Desarrollo</span></td><td>-</td></tr>
+<tr><td>Santafe Inmobiliaria</td><td>Inmobiliaria</td><td><span class="badge badge-dev">Desarrollo</span></td><td>-</td></tr>
+<tr><td>Ayura S.A.S.</td><td>Inmobiliaria</td><td><span class="badge badge-dev">Desarrollo</span></td><td>-</td></tr>
+<tr><td>Esteban Rios</td><td>Inmobiliaria</td><td><span class="badge badge-dev">Desarrollo</span></td><td>-</td></tr>
 <tr><td>Castellon</td><td>Inmobiliaria</td><td><span class="badge badge-dev">Desarrollo</span></td><td>Pruebas: 19 mayo</td></tr>
 </tbody></table></div>
-<div class="backlog-list"><strong>Backlog:</strong><ul><li>Integracion en 8 inmobiliarias priorizadas</li></ul></div>
+<div class="backlog-list"><strong>Backlog:</strong><ul><li>Desarrollo de integracion en las 8 inmobiliarias priorizadas</li></ul></div>
 <div><span class="equipo-tag">2 Dev</span><span class="equipo-tag">0.15 LT</span></div>
 </section>
 
 <section class="section">
 <h2 class="section-title">2. Experiencia Digital y Clientes</h2>
-<div class="section-desc"><strong>Proposito:</strong> Rediseno de puntos de contacto digitales para mejorar satisfaccion y autogestion.</div>
+<div class="section-desc"><strong>Proposito:</strong> Rediseno de puntos de contacto digitales para mejorar la satisfaccion y la autogestion de inmobiliarias e inquilinos.</div>
 <h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">KPIs</h3>
 <div class="kpi-grid">
-<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Leads Portal</div><div class="kpi-values"><span class="kpi-real">En construccion</span></div></div></div>
-<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">INS Portal</div><div class="kpi-values"><span class="kpi-real">En construccion</span><span class="kpi-obj">Obj: 80</span></div></div></div>
-<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">SLO Datadog</div><div class="kpi-values"><span class="kpi-real">En construccion</span></div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Leads Portal</div><div class="kpi-values"><span class="kpi-real">En construccion</span><span class="kpi-obj">Pendiente</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">INS Portal</div><div class="kpi-values"><span class="kpi-real">En construccion</span><span class="kpi-obj">Obj: 80</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">SLO Datadog</div><div class="kpi-values"><span class="kpi-real">En construccion</span><span class="kpi-obj">Pendiente</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Trafico/Sesiones</div><div class="kpi-values"><span class="kpi-real">En construccion</span><span class="kpi-obj">Pendiente</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
+<div class="kpi-card"><div class="semaforo amarillo"></div><div class="kpi-info"><div class="kpi-name">Indicador rendimiento</div><div class="kpi-values"><span class="kpi-real">79</span><span class="kpi-obj">Obj: 80</span></div><div style="font-size:0.8rem;font-weight:600;color:var(--amarillo)">98.75%</div></div></div>
 </div>
-<div class="section-desc"><strong>Web (Fase 1):</strong> Produccion, estabilizacion. Prod: 22 abril.<br><strong>Fase 2:</strong> Diseno.<br>Fin estabilizacion: 8 mayo. Redireccionamiento: Mayo 12.</div>
-<div class="alerta-box"><h4>Alerta</h4><p>Redireccionamiento pospuesto al 10 mayo por avisos de siniestros.</p></div>
-<div class="backlog-list"><strong>Backlog:</strong><ul><li>Portal Inmobiliarias (Login unificado)</li><li>Journey comunicaciones</li></ul></div>
+<h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">Estado Actual</h3>
+<div class="section-desc"><strong>Pagina Web El Libertador (Fase 1):</strong> En produccion y operando, en proceso de estabilizacion para asegurar experiencia optima. Fase clave para consolidar base tecnologica.<br><br><strong>Modulo administrador (Fase 2):</strong> En diseno.<br><strong>Paso a produccion:</strong> 22 de abril.<br><strong>Estado:</strong> <span class="badge badge-estab">Estabilizacion</span><br><br>Se ejecutan: Correccion errores post salida, ajustes funcionales flujos clave, optimizacion desempeno y tiempos de carga.<br><strong>Fin estabilizacion:</strong> 8 de mayo.<br><strong>Redireccionamiento:</strong> 12 de mayo.</div>
+<div class="alerta-box"><h4>Alerta</h4><p>No se realizo el redireccionamiento el 7 de mayo por avisos de siniestros hasta el 10 de mayo. Fecha estimada: 12 de mayo.</p></div>
+<div class="backlog-list"><strong>Backlog:</strong><ul><li>Portal Inmobiliarias (Login unificado)</li><li>Journey de comunicaciones El Libertador</li></ul></div>
 <div><span class="equipo-tag">4 Dev</span><span class="equipo-tag">0.15 LT</span></div>
 </section>
 
 <section class="section">
 <h2 class="section-title">3. Autogestion</h2>
-<div class="section-desc"><strong>Proposito:</strong> Automatizacion de informes y herramientas para liberar capacidad del equipo manual.</div>
+<div class="section-desc"><strong>Proposito:</strong> Iniciativas enfocadas en la automatizacion de informes y herramientas de gestion interna para liberar capacidad del equipo manual.</div>
 <h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">KPIs</h3>
 <div class="kpi-grid">
-<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Aplazadas Biometria/total</div><div class="kpi-values"><span class="kpi-real">2.08%</span></div></div></div>
-<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Biometria negadas</div><div class="kpi-values"><span class="kpi-real">23.48%</span></div></div></div>
-<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Aplazadas/total</div><div class="kpi-values"><span class="kpi-real">26.15%</span></div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Solicitudes Aplazadas Biometria/total</div><div class="kpi-values"><span class="kpi-real">2.08%</span><span class="kpi-obj">Pendiente</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">% biometria gestionadas negadas</div><div class="kpi-values"><span class="kpi-real">23.48%</span><span class="kpi-obj">N/A</span></div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Solicitudes aplazadas/total</div><div class="kpi-values"><span class="kpi-real">26.15%</span><span class="kpi-obj">Pendiente</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">% gestionados Estudio digital negadas</div><div class="kpi-values"><span class="kpi-real">Pendiente</span><span class="kpi-obj">N/A</span></div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Disminucion tiempo operacion</div><div class="kpi-values"><span class="kpi-real">Pendiente</span><span class="kpi-obj">Pendiente</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
 </div>
-<div class="section-desc"><ul style="padding-left:1.2rem"><li>Webapp aplazados: conexion nueva API</li><li>Webapp Biometria: <span class="badge badge-prod">Produccion</span></li><li>Tablero operacion: OK</li></ul></div>
-<div class="alerta-box warning"><h4>Alerta</h4><p>Migracion a Power BI en revision. Looker solo muestra ultimo mes.</p></div>
-<div class="backlog-list"><strong>Backlog:</strong><ul><li>Movilizar solicitudes estudio digital</li><li>Tablero cifras info adicional</li></ul></div>
-<div><span class="equipo-tag">2 Dev</span><span class="equipo-tag">0.15 LT</span></div>
+<h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">Estado Actual</h3>
+<div class="section-desc"><ul style="padding-left:1.2rem"><li>Herramienta gestion aplazados: en proceso conexion a nueva API</li><li>Herramienta gestion aplazados Biometria: <span class="badge badge-prod">En produccion</span></li><li>Tablero cifras operacion: OK conexion nueva API y ajustes solicitados por operacion</li></ul></div>
+<div class="alerta-box warning"><h4>Alerta</h4><p>En revision para migrar a Power BI ya que el tablero de Looker no soporta toda la data (solo muestra ultimo mes). Pendiente definicion de metas por parte de la operacion.</p></div>
+<div class="backlog-list"><strong>Backlog:</strong><ul><li>Acciones para movilizar solicitudes de estudio digital</li></ul></div>
+<div><span class="equipo-tag">2 Dev Autogestion</span><span class="equipo-tag">0.15 LT</span></div>
 </section>
 
 <section class="section">
 <h2 class="section-title">4. Victoria</h2>
-<div class="section-desc"><strong>Proposito:</strong> Optimizar atencion con Victoria, aumentando resolucion automatica, INS y eficiencias.</div>
+<div class="section-desc"><strong>Proposito:</strong> Optimizar la atencion en El Libertador con Victoria, aumentando la resolucion automatica, el INS y las eficiencias operativas.</div>
 <h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">KPIs</h3>
 <div class="kpi-grid">
-<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">INS</div><div class="kpi-values"><span class="kpi-real">Pendiente</span><span class="kpi-obj">Obj: 80</span></div></div></div>
-<div class="kpi-card"><div class="semaforo amarillo"></div><div class="kpi-info"><div class="kpi-name">Resolucion sin humano</div><div class="kpi-values"><span class="kpi-real">90.16%</span><span class="kpi-obj">Obj: 100%</span></div><div style="font-size:0.8rem;font-weight:600;color:var(--amarillo)">90.16%</div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">INS</div><div class="kpi-values"><span class="kpi-real">Pendiente</span><span class="kpi-obj">Obj: 80</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
+<div class="kpi-card"><div class="semaforo amarillo"></div><div class="kpi-info"><div class="kpi-name">% resolucion sin intervencion humana</div><div class="kpi-values"><span class="kpi-real">90.16%</span><span class="kpi-obj">Obj: 100%</span></div><div style="font-size:0.8rem;font-weight:600;color:var(--amarillo)">90.16%</div></div></div>
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name"># solicitudes sin intervencion</div><div class="kpi-values"><span class="kpi-real">1,411</span><span class="kpi-obj">N/A</span></div></div></div>
 <div class="kpi-card"><div class="semaforo rojo"></div><div class="kpi-info"><div class="kpi-name">Eficiencias</div><div class="kpi-values"><span class="kpi-real">0</span><span class="kpi-obj">Obj: 3</span></div><div class="cumpl-critico">0%</div></div></div>
 </div>
-<div class="section-desc"><ol style="padding-left:1.2rem"><li>Estabilizacion Victoria FAQs</li><li>QA agente consulta. Fin: Mayo 11</li><li>Enrutar agente. Fin: Mayo 11</li><li>Validacion traslados. Fin: Mayo 19</li></ol></div>
-<div class="alerta-box warning"><h4>Alerta</h4><p>Nueva encuesta INS pendiente. Apoyo equipo Servicio solicitado.</p></div>
-<div class="backlog-list"><strong>Backlog:</strong><ul><li>Victoria aumento Canon</li><li>Modelo MIA</li><li>Victoria Auditora</li><li>Victoria Cartera</li></ul></div>
+<h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">Estado Actual</h3>
+<div class="section-desc"><ol style="padding-left:1.2rem"><li>Estabilizacion de Victoria FAQs (Preguntas Frecuentes)</li><li>Pruebas QA agente consulta estado estudio digital. Fin: Mayo 11</li><li>Enrutar agente consulta estado estudio digital. Fin: Mayo 11</li><li>Validacion automatica traslados Victoria Gestora. Fin: Mayo 19</li></ol></div>
+<div class="alerta-box warning"><h4>Alerta</h4><p>Se debe implementar nueva encuesta INS para medir la IA. Se solicito apoyo al equipo de Servicio para implementar esta nueva encuesta.</p></div>
+<div class="backlog-list"><strong>Backlog:</strong><ul><li>Validacion automatica Victoria para aumento de Canon</li><li>Ajustar modelo de aprendizaje para MIA</li><li>Victoria Auditora</li><li>Victoria Cartera</li></ul></div>
+<div><span class="equipo-tag">1 Dev</span><span class="equipo-tag">0.15 LT</span></div>
+</section>
+
+<section class="section">
+<h2 class="section-title">5. Recaudo y Cartera</h2>
+<div class="section-desc"><strong>Proposito:</strong> Proyectos que impactan directamente el flujo de caja, la cobranza y los procesos juridicos.</div>
+<h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">KPIs</h3>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="semaforo gris"></div><div class="kpi-info"><div class="kpi-name">Disminucion tiempos</div><div class="kpi-values"><span class="kpi-real">En definicion</span><span class="kpi-obj">En definicion</span></div><div class="cumpl-pendiente">Pendiente</div></div></div>
+</div>
+<h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">Estado Actual</h3>
+<div class="section-desc"><ul style="padding-left:1.2rem"><li>Automatizacion informes de punteo: en definicion</li><li>Oportunidades de automatizacion proceso cartera: en definicion</li></ul></div>
+<div class="backlog-list"><strong>Backlog:</strong><ul><li>Automatizacion informes de siniestros</li><li>Migracion aplicativo huella</li></ul></div>
 <div><span class="equipo-tag">1 Dev</span><span class="equipo-tag">0.15 LT</span></div>
 </section>
 
