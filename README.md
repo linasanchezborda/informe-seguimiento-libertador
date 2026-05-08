@@ -1,0 +1,1 @@
+# Informe Seguimiento Ejecutivo - Squad El Libertador\n\nDashboard de seguimiento ejecutivo para la Vicepresidencia.\n\nPublicado en GitHub Pages: https://linasanchezborda.github.io/informe-seguimiento-libertador/\n
