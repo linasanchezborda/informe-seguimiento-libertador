@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Seguimiento Ejecutivo - Squad El Libertador</title>
+<style>
+:root{--azul:#253150;--rojo:#bd0f14;--gris-claro:#f4f4f4;--gris-medio:#e0e0e0;--verde:#28a745;--amarillo:#f0ad4e;--rojo-sem:#dc3545;--texto:#2c3e50;--texto-sec:#6c757d;--blanco:#ffffff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--gris-claro);color:var(--texto);line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:2rem}
+header{background:linear-gradient(90deg,var(--rojo),var(--azul));color:var(--blanco);padding:2rem 3rem;border-radius:12px;margin-bottom:2rem;box-shadow:0 4px 20px rgba(37,49,80,0.3);display:flex;align-items:center;gap:2rem}
+header .header-content{flex:1}
+header h1{font-size:1.75rem;font-weight:700;margin-bottom:0.5rem}
+header .subtitle{font-size:1rem;opacity:0.9}
+header .meta{display:flex;gap:2rem;margin-top:1rem;font-size:0.85rem;opacity:0.8}
+.logo-header{height:55px;flex-shrink:0}
+.logo-header img{height:100%;width:auto}
+.resumen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-bottom:2rem}
+.resumen-card{background:var(--blanco);border-radius:10px;padding:1.5rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-top:4px solid var(--azul)}
+.resumen-card .valor{font-size:2rem;font-weight:700;color:var(--azul)}
+.resumen-card .label{font-size:0.85rem;color:var(--texto-sec);margin-top:0.25rem}
+.section{margin-bottom:2.5rem}
+.section-title{font-size:1.25rem;font-weight:700;color:var(--azul);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:3px solid var(--rojo);display:inline-block}
+.section-desc{background:var(--blanco);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);font-size:0.92rem;color:var(--texto-sec);border-left:4px solid var(--azul)}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1.5rem}
+.kpi-card{background:var(--blanco);border-radius:10px;padding:1.25rem;box-shadow:0 2px 8px rgba(0,0,0,0.06);display:flex;align-items:center;gap:1rem}
+.kpi-card .semaforo{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+.semaforo.verde{background:var(--verde)}.semaforo.amarillo{background:var(--amarillo)}.semaforo.rojo{background:var(--rojo-sem)}.semaforo.gris{background:var(--gris-medio)}
+.kpi-card .kpi-info{flex:1}
+.kpi-card .kpi-name{font-size:0.85rem;color:var(--texto-sec)}
+.kpi-card .kpi-values{display:flex;gap:1.5rem;margin-top:0.25rem}
+.kpi-card .kpi-real{font-weight:700;color:var(--azul)}
+.kpi-card .kpi-obj{font-size:0.85rem;color:var(--texto-sec)}
+.cumpl-critico{color:var(--rojo-sem);font-weight:600;font-size:0.8rem}.cumpl-pendiente{color:var(--texto-sec);font-style:italic;font-size:0.8rem}
+.table-wrapper{background:var(--blanco);border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:1.5rem}
+table{width:100%;border-collapse:collapse}
+th{background:var(--azul);color:var(--blanco);padding:0.85rem 1rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.03em;text-align:left}
+td{padding:0.75rem 1rem;font-size:0.88rem;border-bottom:1px solid var(--gris-medio)}
+tr:nth-child(even) td{background:var(--gris-claro)}
+tr:last-child td{border-bottom:none}
+.badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600}
+.badge-prod{background:#d4edda;color:#155724}.badge-pruebas{background:#fff3cd;color:#856404}.badge-dev{background:#cce5ff;color:#004085}.badge-estab{background:#e2e3f1;color:#383d6e}
+.alerta-box{background:#fff5f5;border:1px solid #f5c6cb;border-left:4px solid var(--rojo-sem);border-radius:8px;padding:1rem 1.25rem;margin-bottom:1rem}
+.alerta-box.warning{background:#fffbea;border-color:#ffeeba;border-left-color:var(--amarillo)}
+.alerta-box h4{font-size:0.9rem;margin-bottom:0.25rem;color:var(--rojo-sem)}
+.alerta-box.warning h4{color:#856404}
+.alerta-box p{font-size:0.85rem;color:var(--texto-sec)}
+.backlog-list{background:var(--blanco);border-radius:10px;padding:1.25rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:1rem}
+.backlog-list ul{padding-left:1.5rem}.backlog-list li{margin-bottom:0.4rem;font-size:0.88rem;color:var(--texto-sec)}
+.capacidades{background:var(--blanco);border-radius:10px;padding:1rem 1.25rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;border-left:4px solid var(--rojo)}
+.capacidades .cap-label{font-size:0.85rem;color:var(--texto-sec);font-weight:600}
+.capacidades .cap-values{display:flex;gap:1rem}
+.cap-tag{display:inline-block;background:var(--azul);color:var(--blanco);padding:0.3rem 0.75rem;border-radius:20px;font-size:0.8rem}
+.sub-title{font-size:0.95rem;color:var(--azul);font-weight:600;margin:1rem 0 0.5rem}
+.footer{text-align:center;padding:2rem 0 1rem;font-size:0.8rem;color:var(--texto-sec);border-top:1px solid var(--gris-medio);margin-top:2rem}
+@media(max-width:768px){.container{padding:1rem}header{padding:1.5rem;flex-direction:column}header h1{font-size:1.3rem}.resumen-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="logo-header"><img src="../logo-libertador-white.svg" alt="El Libertador"></div>
+<div class="header-content">
+<h1>Dashboard de Seguimiento Ejecutivo</h1>
+<p class="subtitle">Squad El Libertador &mdash; Reporte VP Sponsor</p>
+<div class="meta"><span>Fecha de corte: {{FECHA_CORTE}}</span><span>Carriles activos: {{CARRILES_ACTIVOS}}</span></div>
+</div>
+</header>
+
+<section class="section">
+<h2 class="section-title">Resumen Ejecutivo</h2>
+<div class="resumen-grid">
+<div class="resumen-card"><div class="valor">{{CARRILES_ACTIVOS}}</div><div class="label">Carriles Estrategicos</div></div>
+<div class="resumen-card"><div class="valor">{{EQUIPO_TOTAL}}</div><div class="label">Equipo Total</div></div>
+<div class="resumen-card"><div class="valor" style="color:#dc3545">{{ALERTAS_ACTIVAS}}</div><div class="label">Alertas Activas</div></div>
+</div>
+</section>
+
+<!-- ============ CARRIL TEMPLATE ============ -->
+<!-- Copiar esta seccion por cada carril y reemplazar placeholders -->
+<section class="section">
+<h2 class="section-title">{{N}}. {{CARRIL_NOMBRE}}</h2>
+<div class="section-desc"><strong>Proposito:</strong> {{CARRIL_PROPOSITO}}</div>
+
+<h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">KPIs</h3>
+<div class="kpi-grid">
+<!-- KPI: repetir por cada indicador -->
+<div class="kpi-card">
+  <div class="semaforo {{COLOR}}"></div>
+  <div class="kpi-info">
+    <div class="kpi-name">{{KPI_NOMBRE}}</div>
+    <div class="kpi-values"><span class="kpi-real">{{REAL}}</span><span class="kpi-obj">Obj: {{OBJETIVO}}</span></div>
+    <div class="{{CUMPL_CLASS}}">{{CUMPLIMIENTO}}</div>
+  </div>
+</div>
+<!-- /KPI -->
+</div>
+
+<!-- Estado Actual: texto libre o tablas -->
+<h3 style="font-size:1rem;color:var(--azul);margin-bottom:0.75rem">Estado Actual</h3>
+<div class="section-desc">{{ESTADO_ACTUAL_CONTENIDO}}</div>
+
+<!-- Subtabla (opcional): usar sub-title + table-wrapper -->
+<!--
+<p class="sub-title">Estado Actual &mdash; {{SUBTITULO}}</p>
+<div class="table-wrapper"><table><thead><tr><th>{{COL1}}</th><th>Estado</th><th>Fecha Clave</th></tr></thead><tbody>
+<tr><td>{{NOMBRE}}</td><td><span class="badge {{BADGE}}">{{ESTADO}}</span></td><td>{{FECHA}}</td></tr>
+</tbody></table></div>
+-->
+
+<!-- Alerta (opcional) -->
+<!--
+<div class="alerta-box {{warning si es amarilla}}"><h4>Alerta</h4><p>{{TEXTO_ALERTA}}</p></div>
+-->
+
+<!-- Backlog -->
+<div class="backlog-list"><strong>Backlog:</strong><ul>
+<li>{{ITEM_1}}</li>
+</ul></div>
+
+<!-- Capacidades -->
+<div class="capacidades"><span class="cap-label">Capacidades:</span><div class="cap-values"><span class="cap-tag">{{DEVS}}</span><span class="cap-tag">{{LT}}</span></div></div>
+</section>
+<!-- ============ /CARRIL TEMPLATE ============ -->
+
+<div class="footer"><p>Informe generado con IA &mdash; Squad Agentes IA &middot; El Libertador &middot; {{MES_ANIO}}</p></div>
+</div>
+</body>
+</html>
